@@ -25,26 +25,26 @@ const Profile = () => {
   const displayedPost = activeTab === 'posts' ? userProfile?.posts : userProfile?.bookmarks;
 
   return (
-    <div className='flex max-w-5xl justify-center mx-auto pl-10'>
-      <div className='flex flex-col gap-20 p-8'>
-        <div className='grid grid-cols-2'>
+    <div className='flex mt-10 md:mt-0 bg-red-5 w-full md:max-w-5xl justify-center mx-auto md:pl-10'>
+      <div className='flex flex-col gap-20 md:p-8 bg-blue-60 px-2'>
+        <div className='grid grid-cols-2 bg-green-5 md:mx-0 mt-10 md:mt-0'>
           <section className='flex items-center justify-center'>
-            <Avatar className='h-32 w-32'>
+            <Avatar className='h-20 w-20 md:h-32 md:w-32'>
               <AvatarImage src={userProfile?.profilePicture} alt="profilephoto" />
               <AvatarFallback>DP</AvatarFallback>
             </Avatar>
           </section>
           <section>
-            <div className='flex flex-col gap-5'>
-              <div className='flex items-center gap-2'>
-                <span>{userProfile?.username}</span>
+            <div className='flex flex-col gap-2 md:gap-5'>
+              <div className='flex flex-col items-start gap-2'>
+                <div className='text-xl font-medium '>{userProfile?.username}</div>
+                <div className=''>
                 {
                   isLoggedInUserProfile ? (
-                    <>
-                      <Link to="/account/edit"><Button variant='secondary' className='hover:bg-gray-200 h-8'>Edit profile</Button></Link>
-                      <Button variant='secondary' className='hover:bg-gray-200 h-8'>View archive</Button>
-                      <Button variant='secondary' className='hover:bg-gray-200 h-8'>Ad tools</Button>
-                    </>
+                    <div className='flex gap-2'>
+                      <Link to="/account/edit"><Button variant='secondary' className='hover:bg-gray-200 h-6 md:h-8 text-sm md:text-md'>Edit profile</Button></Link>
+                      <Button variant='secondary' className='hover:bg-gray-200 h-6 md:h-8 text-sm md:text-md'>View archive</Button>
+                    </div>
                   ) : (
                     isFollowing ? (
                       <>
@@ -56,6 +56,7 @@ const Profile = () => {
                     )
                   )
                 }
+                </div>
               </div>
               <div className='flex items-center gap-4'>
                 <p><span className='font-semibold'>{userProfile?.posts.length} </span>posts</p>
@@ -81,7 +82,7 @@ const Profile = () => {
             <span className='py-3 cursor-pointer'>REELS</span>
             <span className='py-3 cursor-pointer'>TAGS</span>
           </div>
-          <div className='grid grid-cols-3 gap-1'>
+          <div className='grid grid-cols-2 md:grid-cols-3 gap-1 md:ml-24'>
             {
               displayedPost?.map((post) => {
                 return (
