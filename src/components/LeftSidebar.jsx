@@ -11,7 +11,7 @@ import React, { useState } from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { toast } from "sonner";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setAuthUser } from "@/redux/authSlice";
 import CreatePost from "./CreatePost";
@@ -62,8 +62,8 @@ const LeftSidebar = () => {
 
   const sidebarItems = [
     { icon: <Home />, text: "Home" },
-    { icon: <Search />, text: "Search" },
-    { icon: <TrendingUp />, text: "Explore" },
+    // { icon: <Search />, text: "Search" },
+    //{ icon: <TrendingUp />, text: "Explore" },
     { icon: <MessageCircle />, text: "Messages" },
     { icon: <Heart />, text: "Notifications" },
     { icon: <PlusSquare />, text: "Create" },
@@ -81,21 +81,31 @@ const LeftSidebar = () => {
   return (
     <div className="fixed bottom-0  md:top-0 z-10 md:left-0 px-4 md:border-r md:border-gray-300 w-[16%] h-screen">
       <div className="flex flex-row md:flex-col">
-       {/* mobile screen */}
+        {/* mobile screen */}
         <div className="fixed flex top-0 left-0 md:top-4 md:left-4 px-4 pt-4 md:flex-col justify-between items-center w-full bg-white rounded-b-lg p-2 md:hidden">
-          <h1 className="md:top-auto md:my-8 md:pl-3 font-bold text-xl bg-blue-5">
-            INSTACHAT
-          </h1>
-          <div onClick={() => sidebarHandler("Logout")}  className="flex items-center gap-1 text-red-600 border border-red-600 cursor-pointer px-2 py-1 rounded-md text-sm md:pl-3">
+          <Link to={"/"}>
+            <h1 className="md:top-auto md:my-8 md:pl-3 font-bold text-xl bg-blue-5">
+              INSTACHAT
+            </h1>
+          </Link>
+          <div
+            onClick={() => sidebarHandler("Logout")}
+            className="flex items-center gap-1 text-red-600 border border-red-600 cursor-pointer px-2 py-1 rounded-md text-sm md:pl-3"
+          >
             {" "}
             <LogOut /> <span>Logout</span>{" "}
           </div>
         </div>
-        
+
         {/* large screen */}
         <div className="hidden md:flex flex-col justify-between fixed top-2 left-4 xl:ml-10 h-full w-40 p-4">
-          <h1 className="font-bold text-xl">INSTACHAT</h1>
-          <div onClick={() => sidebarHandler("Logout")} className="flex items-center gap-1 text-red-600 border border-red-600 hover:bg-red-600 hover:text-white cursor-pointer px-2 py-1 rounded-md">
+          <Link to={"/"}>
+            <h1 className="font-bold text-xl cursor-pointer">INSTACHAT</h1>
+          </Link>
+          <div
+            onClick={() => sidebarHandler("Logout")}
+            className="flex items-center gap-1 text-red-600 border border-red-600 hover:bg-red-600 hover:text-white cursor-pointer px-2 py-1 rounded-md"
+          >
             <LogOut />
             <span>Logout</span>
           </div>

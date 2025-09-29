@@ -6,6 +6,7 @@ import { useSelector } from 'react-redux';
 import { Button } from './ui/button';
 import { Badge } from './ui/badge';
 import { AtSign, Heart, MessageCircle } from 'lucide-react';
+import SuggestedUsers from './SuggestedUsers';
 
 const Profile = () => {
   const params = useParams();
@@ -26,7 +27,7 @@ const Profile = () => {
 
   return (
     <div className='flex mt-10 md:mt-0 bg-red-5 w-full md:max-w-5xl justify-center mx-auto md:pl-10'>
-      <div className='flex flex-col gap-20 md:p-8 bg-blue-60 px-2'>
+      <div className='flex flex-col gap-8 md:p-8 bg-blue-60 px-2'>
         <div className='grid grid-cols-2 bg-green-5 md:mx-0 mt-10 md:mt-0'>
           <section className='flex items-center justify-center'>
             <Avatar className='h-20 w-20 md:h-32 md:w-32'>
@@ -70,6 +71,10 @@ const Profile = () => {
               </div>
             </div>
           </section>
+        </div>
+        {/* suggesed users */}
+        <div className='ml-6 md:ml-20'>
+              <SuggestedUsers className="flex gap-2"/>
         </div>
         <div className='border-t border-t-gray-200'>
           <div className='flex items-center justify-center gap-10 text-sm'>

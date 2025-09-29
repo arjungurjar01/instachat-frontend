@@ -3,18 +3,19 @@ import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom';
 import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
 
-const SuggestedUsers = () => {
+const SuggestedUsers = ({className}) => {
     const { suggestedUsers } = useSelector(store => store.auth);
     return (
-        <div className='my-10'>
+        <div className='md:my-10'>
             <div className='flex items-center justify-between text-sm'>
                 <h1 className='font-semibold text-gray-600'>Suggested for you</h1>
                 <span className='font-medium cursor-pointer'>See All</span>
             </div>
+            <div className={`${className}`} >
             {
                 suggestedUsers.map((user) => {
                     return (
-                        <div key={user._id} className='flex items-center justify-between my-5'>
+                        <div key={user._id} className='flex flex-col md:flex-row items-center justify-between my-5 p-2 rounded-md bg-[#f1f1f1]'>
                             <div className='flex items-center gap-2'>
                                 <Link to={`/profile/${user?._id}`}>
                                     <Avatar>
@@ -32,7 +33,7 @@ const SuggestedUsers = () => {
                     )
                 })
             }
-
+            </div>
         </div>
     )
 }
