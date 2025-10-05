@@ -45,7 +45,7 @@ const ChatPage = () => {
   }, []);
 
   return (
-    <div className="flex flex-col md:flex-row h-screen overflow-hidden md:ml-60">
+    <div className="flex flex-col md:flex-row h-auto md:h-screen overflow-hidden md:ml-60">
       {/* Left Sidebar — User List */}
       <aside
         className={`${
@@ -95,7 +95,7 @@ const ChatPage = () => {
         {selectedUser ? (
           <>
             {/* chat header */}
-            <div className="flex gap-3 items-center px-3 py-2 border-b border-gray-300  top-0 bg-white z-10">
+            <div className="flex w-full gap-3 fixed items-center px-3 py-2 pb-3 border-b border-gray-300  top-0 bg-white z-20">
               <button
                 className="md:hidden text-gray-800 text-4xl"
                 onClick={() => dispatch(setSelectedUser(null))}
@@ -112,10 +112,10 @@ const ChatPage = () => {
             </div>
 
             {/* message section */}
-            <div className="flex-1 p-3 overflow-y-auto z-10">
+            <div className="flex-1 p-3 mb-10 md:mb-4 overflow-y-auto bg-[#f1f1f1]">
               <Messages selectedUser={selectedUser} />
             </div>
-            <div className="flex items-center p-2 md:mx-10 border-t sticky border-t-gray-300 bottom-2 bg-[#1f1f1f] rounded-full z-10">
+            <div className="flex items-center p-2 md:mx-2 border-t fixed w-full md:w-[46vw] lg:w-[58vw] xl:w-[62vw] border-t-gray-300 bottom-0 bg-[#1f1f1f] rounded-full z-10">
               <Input
                 value={textMessage}
                 onChange={(e) => setTextMessage(e.target.value)}
